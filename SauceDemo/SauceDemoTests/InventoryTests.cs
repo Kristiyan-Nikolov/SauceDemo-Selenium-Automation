@@ -140,7 +140,7 @@ namespace SauceDemo.SauceDemoTests
             inventoryPage.AddItem(InventoryData.FleeceJacket);
             inventoryPage.AddItem(InventoryData.Backpack);
             var fleeceJacketAddToCartVisible = inventoryPage.IsAddToCartButtonVisible(InventoryData.FleeceJacket);
-            var BackpackAddToCartVisible = inventoryPage.IsAddToCartButtonVisible(InventoryData.FleeceJacket);
+            var BackpackAddToCartVisible = inventoryPage.IsAddToCartButtonVisible(InventoryData.Backpack);
 
             Assert.Multiple(() =>
             {
@@ -154,7 +154,7 @@ namespace SauceDemo.SauceDemoTests
             Assert.That(loginPage.WaitForStablePage(), Is.True);
             inventoryPage = loginPage.Login(UserData.StandardUser, UserData.Password);
             fleeceJacketAddToCartVisible = inventoryPage.IsAddToCartButtonVisible(InventoryData.FleeceJacket);
-            BackpackAddToCartVisible = inventoryPage.IsAddToCartButtonVisible(InventoryData.FleeceJacket);
+            BackpackAddToCartVisible = inventoryPage.IsAddToCartButtonVisible(InventoryData.Backpack);
 
             Assert.Multiple(() =>
             {

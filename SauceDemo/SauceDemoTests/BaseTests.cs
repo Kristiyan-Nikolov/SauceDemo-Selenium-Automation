@@ -48,6 +48,49 @@ namespace SauceDemo.SauceDemoTests
         [TearDown]
         public void TearDown()
         {
+            var screenshotsDir = Path.Combine(Directory.GetCurrentDirectory(), "Screenshots");
+            var logsDir = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+
+            // Ensure folders exist
+            Directory.CreateDirectory(screenshotsDir);
+            Directory.CreateDirectory(logsDir);
+
+            // Check if the test failed
+            var outcome = TestContext.CurrentContext.Result.Outcome.Status;
+            if (outcome == TestStatus.Failed && driver != null)
+            {
+                try
+                {
+
+                    var invalid = Path.GetInvalidFileNameChars();
+                    var rawName = TestContext.CurrentContext.Test.Name ?? "UnknownTest";
+                    var safeName = string.Join("_", rawName.Split(invalid, StringSplitOptions.RemoveEmptyEntries));
+
+
+                    var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+                    var screenshotPath = Path.Combine(screenshotsDir, $"{safeName}_{DateTime.Now:yyyyMMdd_HHmmss}.png");
+                    screenshot.SaveAsFile(screenshotPath);
+
+
+                    TestContext.AddTestAttachment(screenshotPath, "Screenshot on failure");
+
+
+                    var logs = driver.Manage().Logs.GetLog(LogType.Browser);
+                    if (logs != null && logs.Count > 0)
+                    {
+                        var logPath = Path.Combine(logsDir, $"{safeName}_{DateTime.Now:yyyyMMdd_HHmmss}.txt");
+                        File.WriteAllLines(logPath, logs.Select(l => $"{l.Timestamp} [{l.Level}] {l.Message}"));
+                        TestContext.AddTestAttachment(logPath, "Browser console logs on failure");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // report the teardown error so you can see why saving failed
+                    TestContext.WriteLine($"TearDown: failed to capture artifacts: {ex.GetType().Name}: {ex.Message}");
+                }
+            }
+
+            // Dispose the driver safely
             if (driver != null)
             {
                 try { driver.Quit(); }

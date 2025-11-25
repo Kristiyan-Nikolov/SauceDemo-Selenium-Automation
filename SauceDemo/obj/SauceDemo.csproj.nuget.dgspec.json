@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\FrontEnd-Automation-Selenium\\08-Exercise-Selenium-WebDriver-POM\\SauceDemo\\SauceDemo\\SauceDemo.csproj": {}
+    "C:\\Users\\User\\Desktop\\SauceDemo-Selenium-Automation\\SauceDemo\\SauceDemo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\FrontEnd-Automation-Selenium\\08-Exercise-Selenium-WebDriver-POM\\SauceDemo\\SauceDemo\\SauceDemo.csproj": {
+    "C:\\Users\\User\\Desktop\\SauceDemo-Selenium-Automation\\SauceDemo\\SauceDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\FrontEnd-Automation-Selenium\\08-Exercise-Selenium-WebDriver-POM\\SauceDemo\\SauceDemo\\SauceDemo.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\SauceDemo-Selenium-Automation\\SauceDemo\\SauceDemo.csproj",
         "projectName": "SauceDemo",
-        "projectPath": "C:\\Users\\User\\Desktop\\FrontEnd-Automation-Selenium\\08-Exercise-Selenium-WebDriver-POM\\SauceDemo\\SauceDemo\\SauceDemo.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\SauceDemo-Selenium-Automation\\SauceDemo\\SauceDemo.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\FrontEnd-Automation-Selenium\\08-Exercise-Selenium-WebDriver-POM\\SauceDemo\\SauceDemo\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\SauceDemo-Selenium-Automation\\SauceDemo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
