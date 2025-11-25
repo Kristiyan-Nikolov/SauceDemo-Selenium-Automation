@@ -48,8 +48,10 @@ namespace SauceDemo.SauceDemoTests
         [TearDown]
         public void TearDown()
         {
-            var screenshotsDir = Path.Combine(Directory.GetCurrentDirectory(), "Screenshots");
-            var logsDir = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+            // Modify project root 
+            var projectRoot = @"C:\Users\User\Desktop\SauceDemo-Selenium-Automation\SauceDemo";
+            var screenshotsDir = Path.Combine(projectRoot, "Screenshots");
+            var logsDir = Path.Combine(projectRoot, "Logs");
 
             // Ensure folders exist
             Directory.CreateDirectory(screenshotsDir);
