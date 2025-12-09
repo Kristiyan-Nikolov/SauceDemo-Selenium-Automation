@@ -1,25 +1,28 @@
 name: Selenium CI
+
 on:
   push:
-      branches:
-        -main
+    branches:
+      - main
+
 jobs:
   build:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
+    runs-on: ubuntu-latest
 
-          - name: Set up .Net Core
-            uses: actions/setup-dotnet@v3
-            with: 
-              dotnet-version: '8.0.x'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-          - name: Install dependancies
-            run: dotnet restore
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
 
-          - name: build
-            run: dotnet build --no-restore
+      - name: Install dependencies
+        run: dotnet restore
 
-          - name: Run tests
-            run: dotnet test --verbosity normal
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Run tests
+        run: dotnet test --verbosity normal
