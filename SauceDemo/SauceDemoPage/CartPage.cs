@@ -22,40 +22,7 @@ namespace SauceDemo.SauceDemoPage
             var cartNames = WaitAndFindAllVisible(CartItemNameLocator);
             return cartNames.Select(x => x.Text).ToList();
         }
-        public void RemoveAllItems()
-        {
-            // Remove items by using while loop, take last element and remove untill count of list is == 0
-            const int maxAttempts = 10;
-            int attempts = 0;
-            while (true)
-            {
-                var names = GetCartNames();
-                if (names.Count == 0) return;
-                var last = names.Last();
-                try
-                {
-                    var lastItemLocator = By.XPath($"//div[normalize-space(text())='{last}']/ancestor::div[@class='cart_item']");
-                    ScrollToElement(lastItemLocator);
-                    
-                    RemoveItem(last);
-                    // Need to wait for the DOM update and cart count decreased by one
-                    wait.Until(d => GetCartNames().Count == names.Count - 1);
-                }
-                catch (WebDriverTimeoutException)
-                {
-                    Thread.Sleep(200);
-                }
-                catch (StaleElementReferenceException)
-                {
-
-                }
-                attempts++;
-                if (attempts > maxAttempts)
-                {
-                    throw new InvalidOperationException("Failed to remove all items from cart after multiple attempts");
-                }
-            }
-        }
+        // Outdated removeAll method. Use removeItem in a loop with the inventoryData array
         public InventoryPage ReturnToInventory()
         {
             ClickWhenClickable(InventoryReturnBtnLocator);

@@ -30,9 +30,13 @@ namespace SauceDemo.SauceDemoTests
 
             options.AddArgument("-no-remote");
             options.AddArgument("-private");
+            options.AddArgument("no-sandbox");
+            options.AddArgument("disable-dev-shm-usage");
+            options.AddArgument("disable-gpu");
+            options.AddArgument("window-size=1920x1080");
 
             // Remove comment for headless mode
-            //options.AddArgument("--headless");
+            options.AddArgument("--headless");
 
             // Create geckodriver service with logging
             var service = FirefoxDriverService.CreateDefaultService();
