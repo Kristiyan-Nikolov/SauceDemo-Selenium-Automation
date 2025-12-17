@@ -20,7 +20,6 @@ This is my first automated testing project using the SauceDemo website. It demon
 
 ## Test Structure
 
-- `AuthenticatedTests` – Handles setup, teardown, and driver configuration.
 - `BaseTests` – Handles setup, teardown, and driver configuration.
 - `LoginTests` – Tests login functionality with various credentials.
 - `InventoryTests` – Tests inventory page functionality and sorting.
