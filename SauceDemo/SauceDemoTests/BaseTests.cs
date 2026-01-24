@@ -28,12 +28,12 @@ namespace SauceDemo.SauceDemoTests
             options.SetPreference("browser.shell.checkDefaultBrowser", false);
             options.SetPreference("browser.startup.homepage_override.mstone", "ignore");
 
-            options.AddArgument("-no-remote");
-            options.AddArgument("-private");
-            options.AddArgument("no-sandbox");
-            options.AddArgument("disable-dev-shm-usage");
-            options.AddArgument("disable-gpu");
-            options.AddArgument("window-size=1920x1080");
+            options.AddArgument("--no-remote");
+            options.AddArgument("--private");
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--disable-gpu");
+            
 
             // Remove comment for headless mode
             options.AddArgument("--headless");

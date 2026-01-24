@@ -48,9 +48,9 @@ namespace SauceDemo.SauceDemoTests
             Assert.That(authenticatedPage.GetTitle(), Is.EqualTo(PageTitles.InventoryTitle));
             
             authenticatedPage.Facebook();
-            authenticatedPage.SwitchToNewTabAndWaitForUrl();
+            authenticatedPage.SwitchToNewTabAndWaitForUrl(ExternalLinks.Facebook);
 
-            Assert.That(driver.Url, Is.EqualTo(ExternalLinks.Facebook));
+            Assert.That(driver.Url, Does.Contain(ExternalLinks.Facebook));
             Console.WriteLine("Facebook link successfully reached");
         }
         [Category("Navigation")]

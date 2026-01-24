@@ -57,18 +57,24 @@ namespace SauceDemo.SauceDemoPage
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView({block: 'center'});", element); // Need to learn more about these JSExecutors
         }
 
-        public void SwitchToNewTabAndWaitForUrl(string expectedUrl = null)
+        public void SwitchToNewTabAndWaitForUrl(string expectedUrlPart = null)
         {
-            var tabs = driver.WindowHandles;
-            driver.SwitchTo().Window(tabs.Last());
-            if (expectedUrl == null)
-            {
-                wait.Until(d => d.Url != "about:blank");
+            wait.Until(d => d.WindowHandles.Count > 1);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
 
-            }
-            else 
+            if (expectedUrlPart == null)
             {
-                wait.Until(d => d.Url == expectedUrl);
+                wait.Until(d =>
+                    !string.IsNullOrEmpty(d.Url) &&
+                    !d.Url.StartsWith("about:") &&
+                    !d.Url.StartsWith("chrome-") &&
+                    !d.Url.StartsWith("data:") &&
+                    !d.Url.StartsWith("disable-gpu")
+                );
+            }
+            else
+            {
+                wait.Until(d => d.Url.Contains(expectedUrlPart));
             }
         }
         protected IReadOnlyCollection<IWebElement> WaitAndFindAllVisible(By locator)
