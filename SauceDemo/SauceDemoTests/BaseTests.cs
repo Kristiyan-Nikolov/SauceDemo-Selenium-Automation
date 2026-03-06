@@ -18,6 +18,7 @@ namespace SauceDemo.SauceDemoTests
         [SetUp]
         public void Setup()
         {
+            //test run
             var options = new FirefoxOptions();
 
             options.SetPreference("signon.rememberSignons", false);
